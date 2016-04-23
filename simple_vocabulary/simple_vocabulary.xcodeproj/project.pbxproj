@@ -10,7 +10,6 @@
 		891B81B11CC78D4B002B9E6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B81B01CC78D4B002B9E6B /* main.m */; };
 		891B81B41CC78D4B002B9E6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B81B31CC78D4B002B9E6B /* AppDelegate.m */; };
 		891B81BA1CC78D4B002B9E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B81B81CC78D4B002B9E6B /* Main.storyboard */; };
-		891B81BD1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891B81BB1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodeld */; };
 		891B81BF1CC78D4B002B9E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 891B81BE1CC78D4B002B9E6B /* Assets.xcassets */; };
 		89ED37F01CCBC79E00BC1954 /* SVWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37EF1CCBC79E00BC1954 /* SVWordCell.m */; };
 		89ED37F41CCBCC8100BC1954 /* SVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37F31CCBCC8100BC1954 /* SVNavigationController.m */; };
@@ -18,6 +17,10 @@
 		89ED37FA1CCBCCA700BC1954 /* SVWordDetailsSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37F91CCBCCA700BC1954 /* SVWordDetailsSceneViewController.m */; };
 		89ED37FE1CCBD75900BC1954 /* SVTranslateGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37FD1CCBD75900BC1954 /* SVTranslateGateway.m */; };
 		89ED38021CCBD8F900BC1954 /* SVDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38011CCBD8F900BC1954 /* SVDataManager.m */; };
+		89ED38091CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38071CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld */; };
+		89ED380E1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED380B1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m */; };
+		89ED380F1CCC00A100BC1954 /* TranslationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED380D1CCC00A100BC1954 /* TranslationInfo.m */; };
+		89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */; };
 		EEC4173C1C35ED6A824992CE /* libPods-simple_vocabulary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +31,6 @@
 		891B81B21CC78D4B002B9E6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		891B81B31CC78D4B002B9E6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		891B81B91CC78D4B002B9E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		891B81BC1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = simple_vocabulary.xcdatamodel; sourceTree = "<group>"; };
 		891B81BE1CC78D4B002B9E6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891B81C31CC78D4B002B9E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89ED37E11CCBBEEF00BC1954 /* simple_vocabulary-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "simple_vocabulary-Prefix.pch"; sourceTree = "<group>"; };
@@ -44,6 +46,13 @@
 		89ED37FD1CCBD75900BC1954 /* SVTranslateGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTranslateGateway.m; path = Model/SVTranslateGateway.m; sourceTree = "<group>"; };
 		89ED38001CCBD8F900BC1954 /* SVDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVDataManager.h; path = Model/SVDataManager.h; sourceTree = "<group>"; };
 		89ED38011CCBD8F900BC1954 /* SVDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVDataManager.m; path = Model/SVDataManager.m; sourceTree = "<group>"; };
+		89ED38081CCC003900BC1954 /* SVTranslationInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SVTranslationInfo.xcdatamodel; sourceTree = "<group>"; };
+		89ED380A1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TranslationInfo+CoreDataProperties.h"; path = "Model/TranslationInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		89ED380B1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TranslationInfo+CoreDataProperties.m"; path = "Model/TranslationInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		89ED380C1CCC00A100BC1954 /* TranslationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TranslationInfo.h; path = Model/TranslationInfo.h; sourceTree = "<group>"; };
+		89ED380D1CCC00A100BC1954 /* TranslationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TranslationInfo.m; path = Model/TranslationInfo.m; sourceTree = "<group>"; };
+		89ED38111CCC02E200BC1954 /* SVLocalDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVLocalDatabaseManager.h; path = Model/SVLocalDatabaseManager.h; sourceTree = "<group>"; };
+		89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVLocalDatabaseManager.m; path = Model/SVLocalDatabaseManager.m; sourceTree = "<group>"; };
 		8B0BEB00EF928889CF8A1D8D /* Pods-simple_vocabulary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simple_vocabulary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-simple_vocabulary/Pods-simple_vocabulary.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-simple_vocabulary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,7 +97,6 @@
 				891B81B31CC78D4B002B9E6B /* AppDelegate.m */,
 				891B81BE1CC78D4B002B9E6B /* Assets.xcassets */,
 				891B81C31CC78D4B002B9E6B /* Info.plist */,
-				891B81BB1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodeld */,
 				891B81AF1CC78D4B002B9E6B /* Supporting Files */,
 			);
 			path = simple_vocabulary;
@@ -106,8 +114,10 @@
 		89ED37E21CCBC0B100BC1954 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				89ED38031CCBFE7E00BC1954 /* Translation Info */,
 				89ED37FF1CCBD8E700BC1954 /* Data Manager */,
 				89ED37FB1CCBD70300BC1954 /* Translate Gateway */,
+				89ED38101CCC02C500BC1954 /* Local Database Manager */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,6 +185,27 @@
 				89ED38011CCBD8F900BC1954 /* SVDataManager.m */,
 			);
 			name = "Data Manager";
+			sourceTree = "<group>";
+		};
+		89ED38031CCBFE7E00BC1954 /* Translation Info */ = {
+			isa = PBXGroup;
+			children = (
+				89ED380A1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.h */,
+				89ED380B1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m */,
+				89ED380C1CCC00A100BC1954 /* TranslationInfo.h */,
+				89ED380D1CCC00A100BC1954 /* TranslationInfo.m */,
+				89ED38071CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld */,
+			);
+			name = "Translation Info";
+			sourceTree = "<group>";
+		};
+		89ED38101CCC02C500BC1954 /* Local Database Manager */ = {
+			isa = PBXGroup;
+			children = (
+				89ED38111CCC02E200BC1954 /* SVLocalDatabaseManager.h */,
+				89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */,
+			);
+			name = "Local Database Manager";
 			sourceTree = "<group>";
 		};
 		A32A5AB9156517806B93557B /* Frameworks */ = {
@@ -315,15 +346,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89ED38091CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld in Sources */,
 				89ED37FE1CCBD75900BC1954 /* SVTranslateGateway.m in Sources */,
 				89ED37F41CCBCC8100BC1954 /* SVNavigationController.m in Sources */,
+				89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */,
+				89ED380E1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m in Sources */,
+				89ED380F1CCC00A100BC1954 /* TranslationInfo.m in Sources */,
 				89ED38021CCBD8F900BC1954 /* SVDataManager.m in Sources */,
 				891B81B41CC78D4B002B9E6B /* AppDelegate.m in Sources */,
 				89ED37FA1CCBCCA700BC1954 /* SVWordDetailsSceneViewController.m in Sources */,
 				89ED37F71CCBCCA000BC1954 /* SVMainVocabularyViewController.m in Sources */,
 				89ED37F01CCBC79E00BC1954 /* SVWordCell.m in Sources */,
 				891B81B11CC78D4B002B9E6B /* main.m in Sources */,
-				891B81BD1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,13 +511,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		891B81BB1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodeld */ = {
+		89ED38071CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				891B81BC1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodel */,
+				89ED38081CCC003900BC1954 /* SVTranslationInfo.xcdatamodel */,
 			);
-			currentVersion = 891B81BC1CC78D4B002B9E6B /* simple_vocabulary.xcdatamodel */;
-			path = simple_vocabulary.xcdatamodeld;
+			currentVersion = 89ED38081CCC003900BC1954 /* SVTranslationInfo.xcdatamodel */;
+			name = SVTranslationInfo.xcdatamodeld;
+			path = Model/SVTranslationInfo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

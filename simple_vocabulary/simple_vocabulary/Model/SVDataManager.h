@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SVDataManagerDelegate <NSObject>
+
+- (void)translateEndedWithError:(NSString *)error;
+
+@end
+
 @interface SVDataManager : NSObject
+
+@property (nonatomic, weak) id<SVDataManagerDelegate> delegate;
+
+- (void)translateWord:(NSString *)word;
 
 @end
