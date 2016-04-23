@@ -10,7 +10,7 @@
 
 #import "SVWordCell.h"
 
-@interface SVMainVocabularyViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SVMainVocabularyViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -67,6 +67,12 @@
     [cell configureCellForWord:self.words[indexPath.row]];
     
     return cell;
+}
+
+#pragma mark - Search bar delegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
 }
 
 @end
