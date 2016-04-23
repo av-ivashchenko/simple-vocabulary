@@ -1,0 +1,17 @@
+//
+//  simple_vocabulary-Prefix.pch
+//  simple_vocabulary
+//
+//  Created by Aleksandr Ivashchenko on 4/23/16.
+//  Copyright © 2016 Aleksandr Ivashchenko. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "CoreData+MagicalRecord.h"
+#endif
+
+
