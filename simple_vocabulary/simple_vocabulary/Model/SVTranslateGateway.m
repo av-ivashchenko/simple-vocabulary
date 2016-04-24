@@ -10,6 +10,14 @@
 
 static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.translated.net/";
 
+@interface SVTranslateGateway ()
+
+@property (nonatomic, strong) NSURLSessionDataTask *currentTask;
+
+@property (nonatomic, assign) BOOL isLoading;
+
+@end
+
 @implementation SVTranslateGateway
 
 + (SVTranslateGateway *)sharedTranslateGateway {
@@ -29,6 +37,7 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     if (self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.isLoading = NO;
     }
     
     return self;
@@ -38,6 +47,10 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
         translateType:(SVTranslateType)type
               success:(SVDataManagerSuccessCompletionBlock)successBlock
               failure:(SVDataManagerFailureCompletionBlock)failureBlock {
+    if (self.isLoading) {
+        [self.currentTask cancel];
+    }
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"q"] = word;
@@ -45,11 +58,20 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     parameters[@"of"] = @"json";
     parameters[@"langpair"] = type == SVTranslateRusEng ? @"rus|en" : @"en|rus";
     
-    [self GET:@"get" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"*** Success: %@", responseObject);
+    self.isLoading = YES;
+    
+    __weak SVTranslateGateway *weakSelf = self;
+    
+    self.currentTask = [self GET:@"get" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject[@"responseData"][@"translatedText"]);
+        
+        weakSelf.isLoading = NO;
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"*** Error: %@", [error localizedDescription]);
+        
+        weakSelf.isLoading = NO;
+        
     }];
 }
 

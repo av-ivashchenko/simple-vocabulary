@@ -13,6 +13,7 @@
 @implementation SVLocalDatabaseManager
 
 - (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo {
+    NSLog(@"New word - %@", translationInfo);
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
          [TranslationInfo MR_importFromObject:translationInfo inContext:localContext];
     }];

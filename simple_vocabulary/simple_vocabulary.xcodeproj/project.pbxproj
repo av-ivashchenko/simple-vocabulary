@@ -93,10 +93,7 @@
 				89ED37E21CCBC0B100BC1954 /* Model */,
 				89ED37E31CCBC0B400BC1954 /* View */,
 				89ED37E41CCBC0B700BC1954 /* Controller */,
-				891B81B21CC78D4B002B9E6B /* AppDelegate.h */,
-				891B81B31CC78D4B002B9E6B /* AppDelegate.m */,
-				891B81BE1CC78D4B002B9E6B /* Assets.xcassets */,
-				891B81C31CC78D4B002B9E6B /* Info.plist */,
+				89ED38141CCC15B600BC1954 /* Other */,
 				891B81AF1CC78D4B002B9E6B /* Supporting Files */,
 			);
 			path = simple_vocabulary;
@@ -206,6 +203,17 @@
 				89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */,
 			);
 			name = "Local Database Manager";
+			sourceTree = "<group>";
+		};
+		89ED38141CCC15B600BC1954 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				891B81B21CC78D4B002B9E6B /* AppDelegate.h */,
+				891B81B31CC78D4B002B9E6B /* AppDelegate.m */,
+				891B81BE1CC78D4B002B9E6B /* Assets.xcassets */,
+				891B81C31CC78D4B002B9E6B /* Info.plist */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		A32A5AB9156517806B93557B /* Frameworks */ = {
