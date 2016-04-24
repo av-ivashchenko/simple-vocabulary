@@ -25,11 +25,11 @@
 }
 
 - (NSArray *)fetchAllTranslations {
-    return [TranslationInfo MR_findAll];
+    return [TranslationInfo MR_findAllSortedBy:kDate ascending:NO];
 }
 
 - (NSArray *)fetchTranslationsWithPredicate:(NSPredicate *)predicate {
-    return [TranslationInfo MR_findAllWithPredicate:predicate];
+    return [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:predicate];
 }
 
 @end

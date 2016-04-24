@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 - (void)fetchWords {
     NSString *searchText = self.searchBar.text;
     if ([searchText length] == 0) {
-        self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO];
+        self.words = [self.dataManager fetchTranslationsWithPredicate:nil];
         
         if (self.words.count > 0) {
             self.state = SVResultsState;
@@ -100,13 +100,13 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 
 /** search for substrings */
 - (BOOL)searchWordsForSubstring:(NSString *)substring {
-    self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
+    self.words = [self.dataManager fetchTranslationsWithPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
     return self.words.count != 0;
 }
 
 /** search for whole word */
 - (BOOL)searchWord:(NSString *)word {
-    self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word matches[c] %@", word]];
+    self.words = [self.dataManager fetchTranslationsWithPredicate:[NSPredicate predicateWithFormat:@"word matches[c] %@", word]];
     return self.words.count != 0;
 }
 

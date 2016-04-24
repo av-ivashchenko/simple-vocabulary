@@ -73,4 +73,12 @@
     }
 }
 
+- (NSArray *)fetchTranslationsWithPredicate:(NSPredicate *)predicate {
+    if (!predicate) {
+        return [self.localDatabaseManager fetchAllTranslations];
+    } else {
+        return [self.localDatabaseManager fetchTranslationsWithPredicate:predicate];
+    }
+}
+
 @end

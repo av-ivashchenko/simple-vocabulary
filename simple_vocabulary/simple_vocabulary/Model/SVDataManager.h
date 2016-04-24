@@ -22,4 +22,6 @@
 
 - (void)translateWord:(NSString *)word;
 
+- (NSArray *)fetchTranslationsWithPredicate:(NSPredicate *)predicate;
+
 @end
