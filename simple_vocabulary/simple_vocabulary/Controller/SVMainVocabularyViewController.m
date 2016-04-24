@@ -18,11 +18,19 @@
 
 #import "SVWordDetailsSceneViewController.h"
 
+typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
+    SVNoResultsState,
+    SVSearchingState,
+    SVWebServiceError,
+    SVResultsState,
+};
+
 @interface SVMainVocabularyViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SVDataManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (assign, nonatomic) BOOL isSearching;
+@property (assign, nonatomic) SVVocabularySceneState state;
+@property (copy, nonatomic) NSString *webServiceErrorString;
 @property (strong, nonatomic) SVDataManager *dataManager;
 
 @property (strong, nonatomic) NSArray *words;
@@ -37,8 +45,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _dataManager = [[SVDataManager alloc] init];
-        _words = @[@"что", @"why", @"word"];
-        _isSearching = NO;
+        _state = SVNoResultsState;
+        _webServiceErrorString = nil;
     }
     return self;
 }
@@ -75,6 +83,13 @@
     NSString *searchText = self.searchBar.text;
     if ([searchText length] == 0) {
         self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO];
+        
+        if (self.words.count > 0) {
+            self.state = SVResultsState;
+        } else {
+            self.state = SVNoResultsState;
+        }
+        
     } else {
         [self searchWordsForSubstring:searchText];
     }
@@ -103,42 +118,55 @@
 #pragma mark - Table view datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     NSUInteger rowsCount = self.words.count;
-    
-    if (rowsCount == 0) {
+    if (rowsCount == 0 && self.state != SVResultsState) {
+        UIView *backgroundView = [[UIView alloc] initWithFrame:tableView.bounds];
+        
+        CGFloat originYOffset = 50.0f;
+        CGFloat offsetX = 10.0f;
+        
         UILabel *infoLabel = [[UILabel alloc] init];
+        infoLabel.frame = CGRectMake(offsetX, 0, backgroundView.bounds.size.width - 2*offsetX, 0);
         infoLabel.numberOfLines = 0;
         infoLabel.textColor = tableView.tintColor;
         infoLabel.textAlignment = NSTextAlignmentCenter;
-        if (self.isSearching) {
-            UIView *backgroundView = [[UIView alloc] initWithFrame:tableView.bounds];
         
-            infoLabel.text = @"Searching...";
-            [infoLabel sizeToFit];
-            
-            CGFloat originYOffset = 50.0f;
-            CGFloat offsetY = 20.0f;
-            
-            CGPoint center = tableView.center;
-            infoLabel.center = CGPointMake(center.x, originYOffset - offsetY - (infoLabel.frame.size.height / 2));
- 
-            UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
-            indicatorView.center = CGPointMake(center.x, originYOffset + offsetY + (indicatorView.frame.size.height / 2));
-            indicatorView.color = tableView.tintColor;
-            [indicatorView startAnimating];
-            
-            [backgroundView addSubview:infoLabel];
-            [backgroundView addSubview:indicatorView];
-            
-            tableView.backgroundView = backgroundView;
-        } else {
-            infoLabel.frame = tableView.bounds;
-            infoLabel.text = @"Vocabulary is empty. Search for new translation.";
-            tableView.backgroundView = infoLabel;
+        CGPoint center = backgroundView.center;
+        
+        switch (self.state) {
+            case SVNoResultsState: {
+                infoLabel.text = @"Vocabulary is empty. Search for new translation.";
+                break;
+            }
+            case SVSearchingState: {
+                infoLabel.text = @"Searching...";
+                
+                UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
+                indicatorView.center = CGPointMake(center.x, originYOffset*2);
+                indicatorView.color = tableView.tintColor;
+                [indicatorView startAnimating];
+                
+                [backgroundView addSubview:indicatorView];
+                break;
+            }
+            case SVWebServiceError: {
+                infoLabel.text = self.webServiceErrorString;
+                break;
+            }
+            default: {
+                break;
+            }
         }
+        
+        [infoLabel sizeToFit];
+
+        infoLabel.center = CGPointMake(center.x, originYOffset - (infoLabel.frame.size.height / 2));
+        
+        [backgroundView addSubview:infoLabel];
+        tableView.backgroundView = backgroundView;
     } else {
         self.tableView.backgroundView = nil;
+
     }
     
     return rowsCount;
@@ -182,7 +210,7 @@
         if (!isExist) {
             NSLog(@"*** Search for translation of '%@'", searchText);
             [self.dataManager translateWord:searchText];
-            self.isSearching = YES;
+            self.state = SVSearchingState;
         }
     } else {
         [self fetchWords];
@@ -205,8 +233,15 @@
 #pragma mark - Data manager delegate
 
 - (void)translateEndedWithError:(NSString *)error {
-    self.isSearching = NO;
-    [self fetchWords];
+    if (!error) {
+        self.state = SVResultsState;
+        self.webServiceErrorString = nil;
+        [self fetchWords];
+    } else {
+        self.state = SVWebServiceError;
+        self.webServiceErrorString = error;
+        [self.tableView reloadData];
+    }
 }
 
 @end
