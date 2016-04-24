@@ -12,6 +12,10 @@
 
 #import "SVDataManager.h"
 
+#import "TranslationInfo.h"
+
+#import "NSString+Characters.h"
+
 @interface SVMainVocabularyViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SVDataManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -48,6 +52,21 @@
     self.searchBar.searchBarStyle = UISearchBarStyleProminent;
  
     self.dataManager.delegate = self;
+    
+    [self fetchWords];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Data handling
+
+- (void)fetchWords {
+    self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO];
+}
+
+- (BOOL)searchWordsForSubstring:(NSString *)substring {
+    self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
+    [self.tableView reloadData];
+    return self.words.count != 0;
 }
 
 #pragma mark - Table view delegate
@@ -77,17 +96,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SVWordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordCell" forIndexPath:indexPath];
     
-    [cell configureCellForWord:self.words[indexPath.row]];
+    TranslationInfo *translationInfo = self.words[indexPath.row];
+    
+    [cell configureCellForWord:translationInfo.word];
     
     return cell;
 }
 
 #pragma mark - Search bar delegate
 
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    return [text isAlphabeticalStringOnly] || text.length == 0;
+}
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchText.length > 0) {
-    NSLog(@"*** Search for translation of '%@'", searchText);
-        [self.dataManager translateWord:searchText];
+    if ([self.searchBar.text length] > 0) {
+        //do search in local database
+        BOOL isExist = [self searchWordsForSubstring:self.searchBar.text];
+        //if doesn't exist - find translation in web service
+        if (!isExist) {
+            NSLog(@"*** Search for translation of '%@'", searchText);
+            [self.dataManager translateWord:searchText];
+        }
+    } else {
+        [self fetchWords];
+        [self.tableView reloadData];
     }
 }
 

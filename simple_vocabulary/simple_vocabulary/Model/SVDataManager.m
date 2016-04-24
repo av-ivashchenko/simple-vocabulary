@@ -9,7 +9,7 @@
 #import "SVDataManager.h"
 #import "SVTranslateGateway.h"
 #import "SVLocalDatabaseManager.h"
-#import "NSString+CyrillicCharacters.h"
+#import "NSString+Characters.h"
 
 @interface SVDataManager ()
 
@@ -58,7 +58,7 @@
     NSLog(@"Word: %@, Translation: %@", word, translationWord);
     
     BOOL isWordLatin = [word canBeConvertedToEncoding:NSISOLatin1StringEncoding];
-    BOOL isTranslationWordCyrillic = [translationWord hasRussianCharacters:translationWord];
+    BOOL isTranslationWordCyrillic = [translationWord hasRussianCharacters];
     
     if ((isWordLatin && isTranslationWordCyrillic) || (!isWordLatin && !isTranslationWordCyrillic)) {
         NSLog(@"*** Success! Correct web-service response");

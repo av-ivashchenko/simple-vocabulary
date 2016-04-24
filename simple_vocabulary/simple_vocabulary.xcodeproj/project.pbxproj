@@ -21,7 +21,7 @@
 		89ED380E1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED380B1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m */; };
 		89ED380F1CCC00A100BC1954 /* TranslationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED380D1CCC00A100BC1954 /* TranslationInfo.m */; };
 		89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */; };
-		89ED38181CCCB21800BC1954 /* NSString+CyrillicCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38171CCCB21800BC1954 /* NSString+CyrillicCharacters.m */; };
+		89ED38181CCCB21800BC1954 /* NSString+Characters.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38171CCCB21800BC1954 /* NSString+Characters.m */; };
 		EEC4173C1C35ED6A824992CE /* libPods-simple_vocabulary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +54,8 @@
 		89ED380D1CCC00A100BC1954 /* TranslationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TranslationInfo.m; path = Model/TranslationInfo.m; sourceTree = "<group>"; };
 		89ED38111CCC02E200BC1954 /* SVLocalDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVLocalDatabaseManager.h; path = Model/SVLocalDatabaseManager.h; sourceTree = "<group>"; };
 		89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVLocalDatabaseManager.m; path = Model/SVLocalDatabaseManager.m; sourceTree = "<group>"; };
-		89ED38161CCCB21800BC1954 /* NSString+CyrillicCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CyrillicCharacters.h"; path = "Model/NSString+CyrillicCharacters.h"; sourceTree = "<group>"; };
-		89ED38171CCCB21800BC1954 /* NSString+CyrillicCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CyrillicCharacters.m"; path = "Model/NSString+CyrillicCharacters.m"; sourceTree = "<group>"; };
+		89ED38161CCCB21800BC1954 /* NSString+Characters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Characters.h"; path = "Model/NSString+Characters.h"; sourceTree = "<group>"; };
+		89ED38171CCCB21800BC1954 /* NSString+Characters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Characters.m"; path = "Model/NSString+Characters.m"; sourceTree = "<group>"; };
 		8B0BEB00EF928889CF8A1D8D /* Pods-simple_vocabulary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simple_vocabulary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-simple_vocabulary/Pods-simple_vocabulary.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-simple_vocabulary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -223,8 +223,8 @@
 		89ED38151CCCB1E800BC1954 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				89ED38161CCCB21800BC1954 /* NSString+CyrillicCharacters.h */,
-				89ED38171CCCB21800BC1954 /* NSString+CyrillicCharacters.m */,
+				89ED38161CCCB21800BC1954 /* NSString+Characters.h */,
+				89ED38171CCCB21800BC1954 /* NSString+Characters.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 				89ED37F71CCBCCA000BC1954 /* SVMainVocabularyViewController.m in Sources */,
 				89ED37F01CCBC79E00BC1954 /* SVWordCell.m in Sources */,
 				891B81B11CC78D4B002B9E6B /* main.m in Sources */,
-				89ED38181CCCB21800BC1954 /* NSString+CyrillicCharacters.m in Sources */,
+				89ED38181CCCB21800BC1954 /* NSString+Characters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
