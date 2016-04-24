@@ -39,22 +39,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q16-6w-il8">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q16-6w-il8">
+                                                    <rect key="frame" x="28" y="11" width="458" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="translation" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az0-1N-O7D">
+                                                    <rect key="frame" x="494" y="12" width="73" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="0.93333333330000001" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Q16-6w-il8" firstAttribute="top" secondItem="PeE-je-HE6" secondAttribute="topMargin" constant="3" id="6h8-y2-ygZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Q16-6w-il8" secondAttribute="bottom" constant="4" id="Acz-43-f7f"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="Q16-6w-il8" secondAttribute="leading" constant="-20" id="fLz-nc-03t"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="az0-1N-O7D" secondAttribute="bottom" constant="6" id="2ii-kT-0bD"/>
+                                                <constraint firstItem="az0-1N-O7D" firstAttribute="top" secondItem="PeE-je-HE6" secondAttribute="topMargin" constant="4" id="NfW-4A-6En"/>
+                                                <constraint firstItem="az0-1N-O7D" firstAttribute="leading" secondItem="Q16-6w-il8" secondAttribute="trailing" constant="8" id="Os1-fO-T2H"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Q16-6w-il8" secondAttribute="bottom" constant="4" id="uAA-Xb-1is"/>
+                                                <constraint firstItem="Q16-6w-il8" firstAttribute="leading" secondItem="PeE-je-HE6" secondAttribute="leadingMargin" constant="20" id="wLM-Lk-R6B"/>
+                                                <constraint firstItem="Q16-6w-il8" firstAttribute="top" secondItem="PeE-je-HE6" secondAttribute="topMargin" constant="3" id="zOM-pV-X5j"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="az0-1N-O7D" secondAttribute="trailing" constant="33" id="AFz-u0-uPJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="az0-1N-O7D" secondAttribute="trailing" constant="33" id="Zt5-f4-OGh"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Zt5-f4-OGh"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
+                                            <outlet property="translationLabel" destination="az0-1N-O7D" id="gla-F5-tTj"/>
                                             <outlet property="wordLabel" destination="Q16-6w-il8" id="QEk-Nt-5iz"/>
-                                            <segue destination="ohn-6M-QXO" kind="show" id="DBh-Oj-TUS"/>
+                                            <segue destination="ohn-6M-QXO" kind="show" identifier="ShowDetail" id="DBh-Oj-TUS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

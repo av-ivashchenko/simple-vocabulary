@@ -16,6 +16,8 @@
 
 #import "NSString+Characters.h"
 
+#import "SVWordDetailsSceneViewController.h"
+
 @interface SVMainVocabularyViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SVDataManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -53,6 +55,16 @@
     self.dataManager.delegate = self;
     
     [self fetchWords];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowDetail"]) {
+        SVWordDetailsSceneViewController *controller = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        TranslationInfo *translationInfo = self.words[indexPath.row];
+        controller.word = translationInfo.word;
+        controller.translationWord = translationInfo.translation;
+    }
 }
 
 #pragma mark - Data handling

@@ -8,9 +8,12 @@
 
 #import "SVWordCell.h"
 
+#import "NSString+Characters.h"
+
 @interface SVWordCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *translationLabel;
 
 @end
 
@@ -25,6 +28,7 @@
 
 - (void)configureCellForWord:(NSString *)word {
     self.wordLabel.text = word;
+    self.translationLabel.text = [word hasRussianCharacters] ? @"перевод" : @"translation";
 }
 
 @end

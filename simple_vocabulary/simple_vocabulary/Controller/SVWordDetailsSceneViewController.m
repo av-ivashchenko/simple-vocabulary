@@ -8,6 +8,8 @@
 
 #import "SVWordDetailsSceneViewController.h"
 
+#import "NSString+Characters.h"
+
 @interface SVWordDetailsSceneViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *ruWordTranslationLabel;
@@ -19,8 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    BOOL isWordRus = [self.word hasRussianCharacters];
+    self.ruWordTranslationLabel.text = isWordRus ? self.word : self.translationWord;
+    self.engWordTranslationLabel.text = isWordRus ? self.translationWord : self.word;
 }
-
 
 @end
