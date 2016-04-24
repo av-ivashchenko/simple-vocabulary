@@ -47,10 +47,8 @@
 }
 
 - (SVTranslateType)typeForWord:(NSString *)word {
-    //if russian
-    if (!word) {
+    if ([word hasRussianCharacters]) {
         return SVTranslateRusEng;
-    //if english
     } else {
         return SVTranslateEngRus;
     }
