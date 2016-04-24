@@ -116,69 +116,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htN-jK-oIx">
-                                <rect key="frame" x="20" y="139" width="560" height="386"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Russian Word:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QN8-us-ff8">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="8EV-Zv-KFD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                        <color key="textColor" red="1" green="0.93333333330000001" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Word:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVw-qv-QzX">
-                                        <rect key="frame" x="0.0" y="327" width="560" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="1o6-4E-8hZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                        <color key="textColor" red="1" green="0.93333333330000001" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs0-Rn-iAV">
-                                        <rect key="frame" x="0.0" y="356" width="560" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="wSF-zx-Ezx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.52367995690000002" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="привет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsS-gZ-mk5">
-                                        <rect key="frame" x="0.0" y="38" width="560" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="2Tr-MJ-88T"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.52367995690000002" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Russian Word:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QN8-us-ff8">
+                                <rect key="frame" x="218" y="197" width="164" height="30"/>
                                 <constraints>
-                                    <constraint firstItem="Fs0-Rn-iAV" firstAttribute="leading" secondItem="htN-jK-oIx" secondAttribute="leading" id="9QU-q1-IUB"/>
-                                    <constraint firstItem="QN8-us-ff8" firstAttribute="leading" secondItem="htN-jK-oIx" secondAttribute="leading" id="GMk-k4-Nqm"/>
-                                    <constraint firstItem="Fs0-Rn-iAV" firstAttribute="top" secondItem="ZVw-qv-QzX" secondAttribute="bottom" constant="-1" id="Gee-k8-JCm"/>
-                                    <constraint firstItem="QN8-us-ff8" firstAttribute="top" secondItem="htN-jK-oIx" secondAttribute="top" id="V9v-IT-w2l"/>
-                                    <constraint firstItem="wsS-gZ-mk5" firstAttribute="leading" secondItem="htN-jK-oIx" secondAttribute="leading" id="Zro-IJ-b5Y"/>
-                                    <constraint firstAttribute="trailing" secondItem="QN8-us-ff8" secondAttribute="trailing" id="cBY-rW-8vJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZVw-qv-QzX" secondAttribute="trailing" id="cDN-aw-jvM"/>
-                                    <constraint firstItem="wsS-gZ-mk5" firstAttribute="top" secondItem="QN8-us-ff8" secondAttribute="bottom" constant="8" id="nGt-of-9w6"/>
-                                    <constraint firstItem="ZVw-qv-QzX" firstAttribute="leading" secondItem="htN-jK-oIx" secondAttribute="leading" id="nRi-Q5-i5n"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fs0-Rn-iAV" secondAttribute="trailing" id="owx-yW-hhh"/>
-                                    <constraint firstAttribute="bottom" secondItem="Fs0-Rn-iAV" secondAttribute="bottom" id="sLD-rh-ouv"/>
-                                    <constraint firstAttribute="trailing" secondItem="wsS-gZ-mk5" secondAttribute="trailing" id="ufa-Ct-27e"/>
+                                    <constraint firstAttribute="height" constant="30" id="7Hb-fh-sm8"/>
+                                    <constraint firstAttribute="width" constant="164" id="9Qt-hQ-kP1"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.93333333330000001" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="привет" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsS-gZ-mk5">
+                                <rect key="frame" x="28" y="235" width="544" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="81" id="5Kc-Mf-z6d"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="zZb-4B-qbS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.52367995690000002" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5Kc-Mf-z6d"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="English Word:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVw-qv-QzX">
+                                <rect key="frame" x="222" y="335" width="157" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5hM-ZG-dWM"/>
+                                    <constraint firstAttribute="width" constant="157" id="KbM-n0-6rL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.93333333330000001" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="hello" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs0-Rn-iAV">
+                                <rect key="frame" x="28" y="373" width="544" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="AoC-sE-vLn"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="lkO-g5-3qH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.52367995690000002" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AoC-sE-vLn"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="htN-jK-oIx" firstAttribute="leading" secondItem="56J-cW-xJ8" secondAttribute="leading" constant="20" symbolic="YES" id="4xL-ZE-3zp"/>
-                            <constraint firstItem="htN-jK-oIx" firstAttribute="top" secondItem="XHO-Nc-aFs" secondAttribute="bottom" constant="75" id="Poj-tG-337"/>
-                            <constraint firstAttribute="trailing" secondItem="htN-jK-oIx" secondAttribute="trailing" constant="20" symbolic="YES" id="oEy-Tv-D70"/>
-                            <constraint firstItem="qEH-mI-74T" firstAttribute="top" secondItem="htN-jK-oIx" secondAttribute="bottom" constant="75" id="s1g-9x-SiQ"/>
+                            <constraint firstItem="qEH-mI-74T" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fs0-Rn-iAV" secondAttribute="bottom" priority="250" constant="8" symbolic="YES" id="1jG-X4-Ogs"/>
+                            <constraint firstItem="wsS-gZ-mk5" firstAttribute="centerX" secondItem="56J-cW-xJ8" secondAttribute="centerX" id="9tc-LK-3U7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fs0-Rn-iAV" secondAttribute="trailing" constant="8" id="Jmv-gW-581"/>
+                            <constraint firstItem="Fs0-Rn-iAV" firstAttribute="top" secondItem="ZVw-qv-QzX" secondAttribute="bottom" constant="8" symbolic="YES" id="LZW-QA-F9z"/>
+                            <constraint firstItem="Fs0-Rn-iAV" firstAttribute="leading" secondItem="56J-cW-xJ8" secondAttribute="leadingMargin" constant="8" id="P0s-lW-ZI4"/>
+                            <constraint firstItem="wsS-gZ-mk5" firstAttribute="leading" secondItem="56J-cW-xJ8" secondAttribute="leadingMargin" constant="8" id="Qe8-Jt-XkS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wsS-gZ-mk5" secondAttribute="trailing" constant="8" id="X2v-GE-Gqw"/>
+                            <constraint firstItem="ZVw-qv-QzX" firstAttribute="centerY" secondItem="56J-cW-xJ8" secondAttribute="centerY" constant="50" id="fdO-UE-cVf"/>
+                            <constraint firstItem="ZVw-qv-QzX" firstAttribute="centerX" secondItem="56J-cW-xJ8" secondAttribute="centerX" id="fja-rc-vxa"/>
+                            <constraint firstItem="Fs0-Rn-iAV" firstAttribute="centerX" secondItem="56J-cW-xJ8" secondAttribute="centerX" id="glX-k4-xaK"/>
+                            <constraint firstItem="QN8-us-ff8" firstAttribute="top" relation="lessThanOrEqual" secondItem="XHO-Nc-aFs" secondAttribute="bottom" priority="250" constant="8" symbolic="YES" id="mhZ-Al-XLa"/>
+                            <constraint firstItem="wsS-gZ-mk5" firstAttribute="top" secondItem="QN8-us-ff8" secondAttribute="bottom" constant="8" symbolic="YES" id="ojM-u2-jDL"/>
+                            <constraint firstItem="wsS-gZ-mk5" firstAttribute="centerY" secondItem="56J-cW-xJ8" secondAttribute="centerY" constant="-50" id="uU8-Wy-jHf"/>
+                            <constraint firstItem="QN8-us-ff8" firstAttribute="centerX" secondItem="56J-cW-xJ8" secondAttribute="centerX" id="uzR-kz-M6a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Word Translation" id="NYB-BG-JSH"/>

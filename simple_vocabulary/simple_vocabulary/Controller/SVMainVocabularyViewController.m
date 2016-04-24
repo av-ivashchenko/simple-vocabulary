@@ -61,7 +61,8 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
     self.tableView.separatorColor = [UIColor colorWithWhite:1.0f alpha:0.2f];
     self.searchBar.barStyle = UIBarStyleBlack;
     self.searchBar.searchBarStyle = UISearchBarStyleProminent;
- 
+    self.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    
     self.dataManager.delegate = self;
     
     [self fetchWords];
