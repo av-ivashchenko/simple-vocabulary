@@ -73,7 +73,10 @@ static NSString * const SVMyMemoryAPITranslateURLString = @"http://api.mymemory.
         weakSelf.isLoading = NO;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        weakSelf.isLoading = NO;
+        if (error.code != -999) {
+            weakSelf.isLoading = NO;
+            failureBlock(error);
+        }
     }];
 }
 
