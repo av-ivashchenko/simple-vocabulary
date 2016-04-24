@@ -196,9 +196,9 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         
         return isLatinSearch || isCyrillicSearch;
         //user tapped backspace
-    } else if (text.length == 0)
+    } else if (text.length == 0 || [text isEqualToString:@"\n"]) {
         return YES;
-    else {
+    } else {
         return NO;
     }
 }
@@ -216,10 +216,6 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         [self fetchWords];
     }
     [self.tableView reloadData];
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    [self.dataManager translateWord:searchBar.text];
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
