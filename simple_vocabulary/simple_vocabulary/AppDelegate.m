@@ -36,7 +36,12 @@
 - (void)customizeAppearance {
     [UINavigationBar appearance].barTintColor = [UIColor blackColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    [UINavigationBar appearance].tintColor = [UIColor colorWithRed:255/255.0 green:238/255.0 blue:136/255.0 alpha:1.0];
+    
+    UIColor *tintColor = [UIColor colorWithRed:255/255.0 green:238/255.0 blue:136/255.0 alpha:1.0];
+    
+    [UINavigationBar appearance].tintColor = tintColor;
+    [UISearchBar appearance].tintColor = tintColor;
+    [UITableViewCell appearance].tintColor = tintColor;
 }
 
 @end

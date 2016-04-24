@@ -47,7 +47,6 @@
     self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.tableView.separatorColor = [UIColor colorWithWhite:1.0f alpha:0.2f];
-    self.searchBar.tintColor = self.navigationController.navigationBar.tintColor;
     self.searchBar.barStyle = UIBarStyleBlack;
     self.searchBar.searchBarStyle = UISearchBarStyleProminent;
  
