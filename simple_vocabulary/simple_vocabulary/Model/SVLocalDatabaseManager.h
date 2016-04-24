@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^SVLocalDatabaseManagerInsertCompletionBlock)(NSError *error);
+
 @interface SVLocalDatabaseManager : NSObject
 
-- (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo;
+- (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo
+                                  completion:(SVLocalDatabaseManagerInsertCompletionBlock)completion;
+
 - (NSArray *)fetchTranslationsWithPredicate:(NSPredicate *)predicate;
 - (NSArray *)fetchAllTranslations;
 

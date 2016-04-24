@@ -37,10 +37,12 @@
                                                  translateType:type
                                                        success:^(NSString *translation) {
                                                            if ([self checkTranslationCorrectnessForWord:word translationWord:translation]) {
-                                                               [weakSelf.localDatabaseManager insertToLocalDatabaseTranslationInfo:@{ @"word": word, @"translation": translation, @"date": [NSDate date] }];
+                                                               [weakSelf.localDatabaseManager insertToLocalDatabaseTranslationInfo:@{ @"word": word, @"translation": translation, @"date": [NSDate date] } completion:^(NSError *error) {
+                                                                       [weakSelf.delegate translateEndedWithError:error.localizedDescription];
+                                                               }];
                                                            }
                                                        } failure:^(NSError *error) {
-                                                           //inform user about error
+                                                           [weakSelf.delegate translateEndedWithError:error.localizedDescription];
                                                        }];
 }
 

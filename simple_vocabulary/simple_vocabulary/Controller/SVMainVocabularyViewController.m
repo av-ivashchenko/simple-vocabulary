@@ -53,18 +53,22 @@
     self.dataManager.delegate = self;
     
     [self fetchWords];
-    [self.tableView reloadData];
 }
 
 #pragma mark - Data handling
 
 - (void)fetchWords {
-    self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO];
+    NSString *searchText = self.searchBar.text;
+    if ([searchText length] == 0) {
+        self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO];
+    } else {
+        [self searchWordsForSubstring:searchText];
+    }
+    [self.tableView reloadData];
 }
 
 - (BOOL)searchWordsForSubstring:(NSString *)substring {
     self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
-    [self.tableView reloadData];
     return self.words.count != 0;
 }
 
@@ -105,13 +109,24 @@
 #pragma mark - Search bar delegate
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    return [text isAlphabeticalStringOnly] || text.length == 0;
+    if ([text isAlphabeticalStringOnly]) {
+        BOOL isLatinSearch = [searchBar.text canBeConvertedToEncoding:NSISOLatin1StringEncoding] && [text canBeConvertedToEncoding:NSISOLatin1StringEncoding];
+        BOOL isCyrillicSearch = [text hasRussianCharacters] && ([searchBar.text hasRussianCharacters] || searchBar.text.length == 0);
+        
+        return isLatinSearch || isCyrillicSearch;
+        //user tapped backspace
+    } else if (text.length == 0)
+        return YES;
+    else {
+        return NO;
+    }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([self.searchBar.text length] > 0) {
         //do search in local database
         BOOL isExist = [self searchWordsForSubstring:self.searchBar.text];
+        [self.tableView reloadData];
         //if doesn't exist - find translation in web service
         if (!isExist) {
             NSLog(@"*** Search for translation of '%@'", searchText);
@@ -138,7 +153,9 @@
 #pragma mark - Data manager delegate
 
 - (void)translateEndedWithError:(NSString *)error {
-    
+    if (!error) {
+        [self fetchWords];
+    }
 }
 
 @end

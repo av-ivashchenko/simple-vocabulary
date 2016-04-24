@@ -12,14 +12,17 @@
 
 @implementation SVLocalDatabaseManager
 
-- (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo {
+- (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo completion:(SVLocalDatabaseManagerInsertCompletionBlock)completion {
     NSLog(@"New word - %@", translationInfo);
     
     NSArray *result = [TranslationInfo MR_findByAttribute:@"word" withValue:translationInfo[@"word"]];
     if (result.count == 0) {
-        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             [TranslationInfo MR_importFromObject:translationInfo inContext:localContext];
+        } completion:^(BOOL success, NSError *error) {
+            completion(error);
         }];
+        
     } else {
         NSLog(@"*** Word exist in local database");
     }
