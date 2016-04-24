@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) BOOL isSearching;
 @property (strong, nonatomic) SVDataManager *dataManager;
 
 @property (strong, nonatomic) NSArray *words;
@@ -37,6 +38,7 @@
     if (self) {
         _dataManager = [[SVDataManager alloc] init];
         _words = @[@"что", @"why", @"word"];
+        _isSearching = NO;
     }
     return self;
 }
@@ -101,7 +103,45 @@
 #pragma mark - Table view datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.words.count;
+    
+    NSUInteger rowsCount = self.words.count;
+    
+    if (rowsCount == 0) {
+        UILabel *infoLabel = [[UILabel alloc] init];
+        infoLabel.numberOfLines = 0;
+        infoLabel.textColor = tableView.tintColor;
+        infoLabel.textAlignment = NSTextAlignmentCenter;
+        if (self.isSearching) {
+            UIView *backgroundView = [[UIView alloc] initWithFrame:tableView.bounds];
+        
+            infoLabel.text = @"Searching...";
+            [infoLabel sizeToFit];
+            
+            CGFloat originYOffset = 50.0f;
+            CGFloat offsetY = 20.0f;
+            
+            CGPoint center = tableView.center;
+            infoLabel.center = CGPointMake(center.x, originYOffset - offsetY - (infoLabel.frame.size.height / 2));
+ 
+            UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
+            indicatorView.center = CGPointMake(center.x, originYOffset + offsetY + (indicatorView.frame.size.height / 2));
+            indicatorView.color = tableView.tintColor;
+            [indicatorView startAnimating];
+            
+            [backgroundView addSubview:infoLabel];
+            [backgroundView addSubview:indicatorView];
+            
+            tableView.backgroundView = backgroundView;
+        } else {
+            infoLabel.frame = tableView.bounds;
+            infoLabel.text = @"Vocabulary is empty. Search for new translation.";
+            tableView.backgroundView = infoLabel;
+        }
+    } else {
+        self.tableView.backgroundView = nil;
+    }
+    
+    return rowsCount;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -138,16 +178,16 @@
     if ([self.searchBar.text length] > 0) {
         //do search in local database
         BOOL isExist = [self searchWordsForSubstring:self.searchBar.text];
-        [self.tableView reloadData];
         //if doesn't exist - find translation in web service
         if (!isExist) {
             NSLog(@"*** Search for translation of '%@'", searchText);
             [self.dataManager translateWord:searchText];
+            self.isSearching = YES;
         }
     } else {
         [self fetchWords];
-        [self.tableView reloadData];
     }
+    [self.tableView reloadData];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
@@ -165,9 +205,8 @@
 #pragma mark - Data manager delegate
 
 - (void)translateEndedWithError:(NSString *)error {
-    if (!error) {
-        [self fetchWords];
-    }
+    self.isSearching = NO;
+    [self fetchWords];
 }
 
 @end

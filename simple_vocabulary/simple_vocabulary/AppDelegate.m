@@ -39,9 +39,11 @@
     
     UIColor *tintColor = [UIColor colorWithRed:255/255.0 green:238/255.0 blue:136/255.0 alpha:1.0];
     
+    [UITableView appearance].tintColor = tintColor;
     [UINavigationBar appearance].tintColor = tintColor;
     [UISearchBar appearance].tintColor = tintColor;
     [UITableViewCell appearance].tintColor = tintColor;
+    [UIActivityIndicatorView appearance].tintColor = tintColor;
 }
 
 @end

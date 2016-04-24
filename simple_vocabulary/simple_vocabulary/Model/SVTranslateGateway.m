@@ -65,7 +65,8 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     
     self.currentTask = [self GET:@"get" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"responseData"][@"translatedText"] == [NSNull null]) {
-            NSLog(@"*** Error! The word is not found.");
+            NSLog(@"*** The translation of the word is not found.");
+            successBlock(nil);
         } else {
             successBlock(responseObject[@"responseData"][@"translatedText"]);
         }
