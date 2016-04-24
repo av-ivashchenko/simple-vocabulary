@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         
         switch (self.state) {
             case SVNoResultsState: {
-                infoLabel.text = @"Vocabulary is empty. Search for new translation.";
+                infoLabel.text = @"Vocabulary is empty. Type the word to find the translation.";
                 break;
             }
             case SVSearchingState: {
@@ -208,7 +208,6 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         BOOL isExist = [self searchWordsForSubstring:self.searchBar.text];
         //if doesn't exist - find translation in web service
         if (!isExist) {
-            NSLog(@"*** Search for translation of '%@'", searchText);
             [self.dataManager translateWord:searchText];
             self.state = SVSearchingState;
         }

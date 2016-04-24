@@ -59,16 +59,14 @@
 }
 
 - (BOOL)checkTranslationCorrectnessForWord:(NSString *)word translationWord:(NSString *)translationWord {
-    NSLog(@"Word: %@, Translation: %@", word, translationWord);
-    
     BOOL isWordLatin = [word canBeConvertedToEncoding:NSISOLatin1StringEncoding];
     BOOL isTranslationWordCyrillic = [translationWord hasRussianCharacters];
     
     if ((isWordLatin && isTranslationWordCyrillic) || (!isWordLatin && !isTranslationWordCyrillic)) {
-        NSLog(@"*** Success! Correct web-service response");
+        //Correct web-service response
         return YES;
     } else {
-        NSLog(@"*** Error! Wrong response from the web-service(not correct translation).");
+        //Wrong response from the web-service(not correct translation)
         return NO;
     }
 }
