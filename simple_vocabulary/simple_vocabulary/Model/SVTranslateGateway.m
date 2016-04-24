@@ -49,6 +49,7 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
               failure:(SVDataManagerFailureCompletionBlock)failureBlock {
     if (self.isLoading) {
         [self.currentTask cancel];
+        NSLog(@"*** Task cancelled");
     }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -63,8 +64,12 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     __weak SVTranslateGateway *weakSelf = self;
     
     self.currentTask = [self GET:@"get" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        successBlock(responseObject[@"responseData"][@"translatedText"]);
-        
+        if (responseObject[@"responseData"][@"translatedText"] == [NSNull null]) {
+            NSLog(@"*** Error! The word is not found.");
+        } else {
+            successBlock(responseObject[@"responseData"][@"translatedText"]);
+        }
+    
         weakSelf.isLoading = NO;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -85,7 +85,10 @@
 #pragma mark - Search bar delegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
+    if (searchText.length > 0) {
+    NSLog(@"*** Search for translation of '%@'", searchText);
+        [self.dataManager translateWord:searchText];
+    }
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {

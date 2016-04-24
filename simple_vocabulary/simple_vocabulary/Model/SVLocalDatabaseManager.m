@@ -14,9 +14,15 @@
 
 - (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo {
     NSLog(@"New word - %@", translationInfo);
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-         [TranslationInfo MR_importFromObject:translationInfo inContext:localContext];
-    }];
+    
+    NSArray *result = [TranslationInfo MR_findByAttribute:@"word" withValue:translationInfo[@"word"]];
+    if (result.count == 0) {
+        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            [TranslationInfo MR_importFromObject:translationInfo inContext:localContext];
+        }];
+    } else {
+        NSLog(@"*** Word exist in local database");
+    }
 }
 
 - (NSArray *)fetchAllTranslations {
