@@ -7,8 +7,9 @@
 //
 
 #import "SVTranslateGateway.h"
+#import "NSDictionary+DataValues.h"
 
-static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.translated.net/";
+static NSString * const SVMyMemoryAPITranslateURLString = @"http://api.mymemory.translated.net/";
 
 @interface SVTranslateGateway ()
 
@@ -25,7 +26,7 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedTranslateGateway = [[self alloc] initWithBaseURL:[NSURL URLWithString:MyMemoryAPITranslateURLString]];
+        _sharedTranslateGateway = [[self alloc] initWithBaseURL:[NSURL URLWithString:SVMyMemoryAPITranslateURLString]];
     });
     
     return _sharedTranslateGateway;
@@ -53,21 +54,21 @@ static NSString * const MyMemoryAPITranslateURLString = @"http://api.mymemory.tr
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    parameters[@"q"] = word;
-    parameters[@"mt"] = @(0);
-    parameters[@"of"] = @"json";
-    parameters[@"langpair"] = type == SVTranslateRusEng ? @"rus|en" : @"en|rus";
+    parameters[kQ] = word;
+    parameters[kMt] = @(0);
+    parameters[kOf] = kJson;
+    parameters[kLangpair] = type == SVTranslateRusEng ? kRusEn : kEnRus;
     
     self.isLoading = YES;
     
     __weak SVTranslateGateway *weakSelf = self;
     
-    self.currentTask = [self GET:@"get" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"responseData"][@"translatedText"] == [NSNull null]) {
+    self.currentTask = [self GET:kGet parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (![responseObject translatedText]) {
             //The translation of the word is not found.
             successBlock(nil);
         } else {
-            successBlock(responseObject[@"responseData"][@"translatedText"]);
+            successBlock([responseObject translatedText]);
         }
         weakSelf.isLoading = NO;
         

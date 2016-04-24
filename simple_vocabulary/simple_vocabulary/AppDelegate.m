@@ -22,8 +22,6 @@
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"DataStore"];
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
-    NSLog(@"%@", [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]);
-    
     [self customizeAppearance];
     
     return YES;
@@ -35,7 +33,7 @@
 
 - (void)customizeAppearance {
     [UINavigationBar appearance].barTintColor = [UIColor blackColor];
-    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [UINavigationBar appearance].titleTextAttributes = @{ NSForegroundColorAttributeName:[UIColor whiteColor] };
     
     UIColor *tintColor = [UIColor colorWithRed:255/255.0 green:238/255.0 blue:136/255.0 alpha:1.0];
     

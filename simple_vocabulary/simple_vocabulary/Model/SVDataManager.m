@@ -37,14 +37,16 @@
                                                  translateType:type
                                                        success:^(NSString *translation) {
                                                            if (translation && [self checkTranslationCorrectnessForWord:word translationWord:translation]) {
-                                                               [weakSelf.localDatabaseManager insertToLocalDatabaseTranslationInfo:@{ @"word": word, @"translation": translation, @"date": [NSDate date] }
+                                                               [weakSelf.localDatabaseManager insertToLocalDatabaseTranslationInfo:@{ kWord: word,
+                                                                                                                                      kTranslation: translation,
+                                                                                                                                      kDate: [NSDate date] }
                                                                                                                         completion:^(NSError *error) {
                                                                                                                             [weakSelf.delegate translateEndedWithError:error.localizedDescription];
                                                                                                                         }];
-
+                                                               
                                                            } else {
                                                                [weakSelf.delegate translateEndedWithError:[NSString stringWithFormat:@"The translation of the word '%@' is not found.", word]];
-                                                                }
+                                                           }
                                                        } failure:^(NSError *error) {
                                                            [weakSelf.delegate translateEndedWithError:error.localizedDescription];
                                                        }];

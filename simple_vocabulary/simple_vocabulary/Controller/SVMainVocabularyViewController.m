@@ -7,15 +7,10 @@
 //
 
 #import "SVMainVocabularyViewController.h"
-
 #import "SVWordCell.h"
-
 #import "SVDataManager.h"
-
 #import "TranslationInfo.h"
-
 #import "NSString+Characters.h"
-
 #import "SVWordDetailsSceneViewController.h"
 
 typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
@@ -29,9 +24,10 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) SVDataManager *dataManager;
 @property (assign, nonatomic) SVVocabularySceneState state;
 @property (copy, nonatomic) NSString *webServiceErrorString;
-@property (strong, nonatomic) SVDataManager *dataManager;
 
 @property (strong, nonatomic) NSArray *words;
 
@@ -69,7 +65,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowDetail"]) {
+    if ([segue.identifier isEqualToString:kShowDetail]) {
         SVWordDetailsSceneViewController *controller = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         TranslationInfo *translationInfo = self.words[indexPath.row];
@@ -83,7 +79,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 - (void)fetchWords {
     NSString *searchText = self.searchBar.text;
     if ([searchText length] == 0) {
-        self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO];
+        self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO];
         
         if (self.words.count > 0) {
             self.state = SVResultsState;
@@ -98,7 +94,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 }
 
 - (BOOL)searchWordsForSubstring:(NSString *)substring {
-    self.words = [TranslationInfo MR_findAllSortedBy:@"date" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
+    self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
     return self.words.count != 0;
 }
 
@@ -178,11 +174,15 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SVWordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordCell" forIndexPath:indexPath];
+    SVWordCell *cell = [tableView dequeueReusableCellWithIdentifier:kWordCell forIndexPath:indexPath];
     
     TranslationInfo *translationInfo = self.words[indexPath.row];
     
     [cell configureCellForWord:translationInfo.word];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    view.backgroundColor = [self.tableView.tintColor colorWithAlphaComponent:0.2];
+    cell.selectedBackgroundView = view;
     
     return cell;
 }

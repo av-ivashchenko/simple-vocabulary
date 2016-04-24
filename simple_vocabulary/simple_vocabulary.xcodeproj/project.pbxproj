@@ -22,6 +22,7 @@
 		89ED380F1CCC00A100BC1954 /* TranslationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED380D1CCC00A100BC1954 /* TranslationInfo.m */; };
 		89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */; };
 		89ED38181CCCB21800BC1954 /* NSString+Characters.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED38171CCCB21800BC1954 /* NSString+Characters.m */; };
+		89ED381E1CCCEF2400BC1954 /* NSDictionary+DataValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED381D1CCCEF2400BC1954 /* NSDictionary+DataValues.m */; };
 		EEC4173C1C35ED6A824992CE /* libPods-simple_vocabulary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,9 @@
 		89ED38121CCC02E200BC1954 /* SVLocalDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVLocalDatabaseManager.m; path = Model/SVLocalDatabaseManager.m; sourceTree = "<group>"; };
 		89ED38161CCCB21800BC1954 /* NSString+Characters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Characters.h"; path = "Model/NSString+Characters.h"; sourceTree = "<group>"; };
 		89ED38171CCCB21800BC1954 /* NSString+Characters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Characters.m"; path = "Model/NSString+Characters.m"; sourceTree = "<group>"; };
+		89ED381B1CCCEC8500BC1954 /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
+		89ED381C1CCCEF2400BC1954 /* NSDictionary+DataValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+DataValues.h"; path = "Model/NSDictionary+DataValues.h"; sourceTree = "<group>"; };
+		89ED381D1CCCEF2400BC1954 /* NSDictionary+DataValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+DataValues.m"; path = "Model/NSDictionary+DataValues.m"; sourceTree = "<group>"; };
 		8B0BEB00EF928889CF8A1D8D /* Pods-simple_vocabulary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simple_vocabulary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-simple_vocabulary/Pods-simple_vocabulary.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C7BD81AE515E80FFCEACD4 /* libPods-simple_vocabulary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-simple_vocabulary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,7 +122,6 @@
 				89ED37FF1CCBD8E700BC1954 /* Data Manager */,
 				89ED37FB1CCBD70300BC1954 /* Translate Gateway */,
 				89ED38101CCC02C500BC1954 /* Local Database Manager */,
-				89ED38151CCCB1E800BC1954 /* Categories */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -126,9 +129,8 @@
 		89ED37E31CCBC0B400BC1954 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				891B81B81CC78D4B002B9E6B /* Main.storyboard */,
-				89ED37EE1CCBC79E00BC1954 /* SVWordCell.h */,
-				89ED37EF1CCBC79E00BC1954 /* SVWordCell.m */,
+				89ED38191CCCEC2500BC1954 /* Main Storyboard */,
+				89ED381A1CCCEC2E00BC1954 /* Word Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -212,10 +214,12 @@
 		89ED38141CCC15B600BC1954 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				89ED38151CCCB1E800BC1954 /* Categories */,
 				891B81B21CC78D4B002B9E6B /* AppDelegate.h */,
 				891B81B31CC78D4B002B9E6B /* AppDelegate.m */,
 				891B81BE1CC78D4B002B9E6B /* Assets.xcassets */,
 				891B81C31CC78D4B002B9E6B /* Info.plist */,
+				89ED381B1CCCEC8500BC1954 /* SVConstants.h */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -225,8 +229,27 @@
 			children = (
 				89ED38161CCCB21800BC1954 /* NSString+Characters.h */,
 				89ED38171CCCB21800BC1954 /* NSString+Characters.m */,
+				89ED381C1CCCEF2400BC1954 /* NSDictionary+DataValues.h */,
+				89ED381D1CCCEF2400BC1954 /* NSDictionary+DataValues.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		89ED38191CCCEC2500BC1954 /* Main Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				891B81B81CC78D4B002B9E6B /* Main.storyboard */,
+			);
+			name = "Main Storyboard";
+			sourceTree = "<group>";
+		};
+		89ED381A1CCCEC2E00BC1954 /* Word Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89ED37EE1CCBC79E00BC1954 /* SVWordCell.h */,
+				89ED37EF1CCBC79E00BC1954 /* SVWordCell.m */,
+			);
+			name = "Word Cell";
 			sourceTree = "<group>";
 		};
 		A32A5AB9156517806B93557B /* Frameworks */ = {
@@ -369,6 +392,7 @@
 			files = (
 				89ED38091CCC003900BC1954 /* SVTranslationInfo.xcdatamodeld in Sources */,
 				89ED37FE1CCBD75900BC1954 /* SVTranslateGateway.m in Sources */,
+				89ED381E1CCCEF2400BC1954 /* NSDictionary+DataValues.m in Sources */,
 				89ED37F41CCBCC8100BC1954 /* SVNavigationController.m in Sources */,
 				89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */,
 				89ED380E1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m in Sources */,

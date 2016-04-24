@@ -13,7 +13,7 @@
 @implementation SVLocalDatabaseManager
 
 - (void)insertToLocalDatabaseTranslationInfo:(NSDictionary *)translationInfo completion:(SVLocalDatabaseManagerInsertCompletionBlock)completion {
-    NSArray *result = [TranslationInfo MR_findByAttribute:@"word" withValue:translationInfo[@"word"]];
+    NSArray *result = [TranslationInfo MR_findByAttribute:kWord withValue:translationInfo[kWord]];
     //save new word+translation if if doesn't exist in local database
     if (result.count == 0) {
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -21,7 +21,6 @@
         } completion:^(BOOL success, NSError *error) {
             completion(error);
         }];
-        
     }
 }
 

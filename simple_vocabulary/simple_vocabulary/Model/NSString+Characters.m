@@ -11,13 +11,13 @@
 @implementation NSString (Characters)
 
 - (BOOL)hasRussianCharacters {
-    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:kRusCharacters];
     return [self rangeOfCharacterFromSet:set].location != NSNotFound;
     
 }
 
 - (BOOL)isAlphabeticalStringOnly {
-    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ"];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:[NSString stringWithFormat:@"%@%@", kRusCharacters, kEnCharacters]];
     return [self rangeOfCharacterFromSet:set].location != NSNotFound;
 }
 

@@ -10,6 +10,8 @@
 
 @protocol SVDataManagerDelegate <NSObject>
 
+/** Notifies when app got response from web service
+ @param error will be nil if response was successful */
 - (void)translateEndedWithError:(NSString *)error;
 
 @end

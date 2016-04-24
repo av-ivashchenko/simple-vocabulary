@@ -28,7 +28,7 @@
 
 - (void)configureCellForWord:(NSString *)word {
     self.wordLabel.text = word;
-    self.translationLabel.text = [word hasRussianCharacters] ? @"перевод" : @"translation";
+    self.translationLabel.text = [word hasRussianCharacters] ? kRusTranslation : kEnTranslation;
 }
 
 @end
