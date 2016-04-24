@@ -93,8 +93,20 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
     [self.tableView reloadData];
 }
 
+- (void)translateString:(NSString *)string {
+    [self.dataManager translateWord:string];
+    self.state = SVSearchingState;
+}
+
+/** search for substrings */
 - (BOOL)searchWordsForSubstring:(NSString *)substring {
     self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word contains[c] %@", substring]];
+    return self.words.count != 0;
+}
+
+/** search for whole word */
+- (BOOL)searchWord:(NSString *)word {
+    self.words = [TranslationInfo MR_findAllSortedBy:kDate ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"word matches[c] %@", word]];
     return self.words.count != 0;
 }
 
@@ -209,8 +221,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         BOOL isExist = [self searchWordsForSubstring:self.searchBar.text];
         //if doesn't exist - find translation in web service
         if (!isExist) {
-            [self.dataManager translateWord:searchText];
-            self.state = SVSearchingState;
+            [self translateString:searchText];
         }
     } else {
         [self fetchWords];
@@ -224,6 +235,11 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+    
+    BOOL isExist = [self searchWord:searchBar.text];
+    if (!isExist) {
+        [self translateString:searchBar.text];
+    }
 }
 
 #pragma mark - Data manager delegate
