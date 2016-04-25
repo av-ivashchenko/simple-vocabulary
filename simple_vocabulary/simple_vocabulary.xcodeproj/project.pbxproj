@@ -11,6 +11,7 @@
 		891B81B41CC78D4B002B9E6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B81B31CC78D4B002B9E6B /* AppDelegate.m */; };
 		891B81BA1CC78D4B002B9E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B81B81CC78D4B002B9E6B /* Main.storyboard */; };
 		891B81BF1CC78D4B002B9E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 891B81BE1CC78D4B002B9E6B /* Assets.xcassets */; };
+		89209F1C1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89209F1B1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.m */; };
 		89ED37F01CCBC79E00BC1954 /* SVWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37EF1CCBC79E00BC1954 /* SVWordCell.m */; };
 		89ED37F41CCBCC8100BC1954 /* SVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37F31CCBCC8100BC1954 /* SVNavigationController.m */; };
 		89ED37F71CCBCCA000BC1954 /* SVMainVocabularyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ED37F61CCBCCA000BC1954 /* SVMainVocabularyViewController.m */; };
@@ -35,6 +36,8 @@
 		891B81B91CC78D4B002B9E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		891B81BE1CC78D4B002B9E6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891B81C31CC78D4B002B9E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89209F1A1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+GlobalTintColor.h"; path = "Model/UIColor+GlobalTintColor.h"; sourceTree = "<group>"; };
+		89209F1B1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+GlobalTintColor.m"; path = "Model/UIColor+GlobalTintColor.m"; sourceTree = "<group>"; };
 		89ED37E11CCBBEEF00BC1954 /* simple_vocabulary-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "simple_vocabulary-Prefix.pch"; sourceTree = "<group>"; };
 		89ED37EE1CCBC79E00BC1954 /* SVWordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVWordCell.h; path = View/SVWordCell.h; sourceTree = "<group>"; };
 		89ED37EF1CCBC79E00BC1954 /* SVWordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVWordCell.m; path = View/SVWordCell.m; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				89ED38171CCCB21800BC1954 /* NSString+Characters.m */,
 				89ED381C1CCCEF2400BC1954 /* NSDictionary+DataValues.h */,
 				89ED381D1CCCEF2400BC1954 /* NSDictionary+DataValues.m */,
+				89209F1A1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.h */,
+				89209F1B1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				89ED37FE1CCBD75900BC1954 /* SVTranslateGateway.m in Sources */,
 				89ED381E1CCCEF2400BC1954 /* NSDictionary+DataValues.m in Sources */,
 				89ED37F41CCBCC8100BC1954 /* SVNavigationController.m in Sources */,
+				89209F1C1CCDF58F00AAACB1 /* UIColor+GlobalTintColor.m in Sources */,
 				89ED38131CCC02E200BC1954 /* SVLocalDatabaseManager.m in Sources */,
 				89ED380E1CCC00A100BC1954 /* TranslationInfo+CoreDataProperties.m in Sources */,
 				89ED380F1CCC00A100BC1954 /* TranslationInfo.m in Sources */,

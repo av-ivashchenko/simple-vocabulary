@@ -24,6 +24,7 @@
     
     self.backgroundColor = [UIColor blackColor];
     self.wordLabel.textColor = [UIColor whiteColor];
+    self.translationLabel.textColor = [UIColor globalTintColor];
 }
 
 - (void)configureCellForWord:(NSString *)word {

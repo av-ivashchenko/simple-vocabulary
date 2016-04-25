@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
         UILabel *infoLabel = [[UILabel alloc] init];
         infoLabel.frame = CGRectMake(offsetX, 0, backgroundView.bounds.size.width - 2*offsetX, 0);
         infoLabel.numberOfLines = 0;
-        infoLabel.textColor = tableView.tintColor;
+        infoLabel.textColor = [UIColor globalTintColor];
         infoLabel.textAlignment = NSTextAlignmentCenter;
         
         CGPoint center = backgroundView.center;
@@ -152,7 +152,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
                 
                 UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
                 indicatorView.center = CGPointMake(center.x, originYOffset*2);
-                indicatorView.color = tableView.tintColor;
+                indicatorView.color = [UIColor globalTintColor];
                 [indicatorView startAnimating];
                 
                 [backgroundView addSubview:indicatorView];
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, SVVocabularySceneState) {
     [cell configureCellForWord:translationInfo.word];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = [self.tableView.tintColor colorWithAlphaComponent:0.2];
+    view.backgroundColor = [[UIColor globalTintColor] colorWithAlphaComponent:0.2];
     cell.selectedBackgroundView = view;
     
     return cell;
